@@ -1,0 +1,39 @@
+
+body {
+  margin: 0px;
+}
+*{
+  margin:0px;
+  padding: 0px;
+}
+
+header {
+  background-color: #4285f4;
+  .material-bar {
+    height: 64px;
+    width: 100%;
+    background: #fff;
+  }
+  .appbar-container {
+    height: 64px;
+  }
+}
+
+.fe-content {
+  .primary-container {
+    background-color: #4285f4;
+    padding: 0 0 64px 128px;
+  }
+  .page-width-container {
+
+  }
+  .main-content {
+    width: 832px;
+    float: left;
+    .page {
+      background: #fff;
+      padding: 64px;
+    }
+  }
+}
+@import "../../style/md_1";

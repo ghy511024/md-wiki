@@ -46,8 +46,6 @@ Learn more about
                     .use(html)
                     .process(this.mdstr, function (err, file) {
                         _this.htmls = String(file);
-//                        console.log(String(file), "bbbbbbbbbbbb");
-//                        console.error(report(err || file));
                     });
 
             },

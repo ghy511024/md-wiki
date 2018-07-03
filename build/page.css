@@ -25,6 +25,43 @@ header {
     background: #fff;
     padding: 64px; }
 
+.fe-content .primary-nav {
+  display: table-cell;
+  width: 320px;
+  background-color: #4285f4;
+  color: #212121; }
+  .fe-content .primary-nav nav {
+    font-size: 13px;
+    line-height: 20px;
+    margin-left: 64px;
+    min-height: 262px;
+    text-size-adjust: 100%;
+    width: 256px; }
+    .fe-content .primary-nav nav ul {
+      margin: 0px;
+      padding: 0px; }
+      .fe-content .primary-nav nav ul li {
+        list-style: none; }
+        .fe-content .primary-nav nav ul li a {
+          border-left-color: rgba(0, 0, 0, 0);
+          border-left-style: solid;
+          border-left-width: 2px;
+          color: #e3edfe;
+          display: block;
+          font-size: 13px;
+          height: 20px;
+          line-height: 20px;
+          padding-bottom: 6px;
+          padding-left: 14px;
+          padding-right: 0px;
+          padding-top: 6px;
+          text-decoration-color: #e3edfe;
+          text-decoration-line: none;
+          text-decoration-style: solid; }
+          .fe-content .primary-nav nav ul li a:hover {
+            background-color: #3b78e7;
+            text-decoration: none; }
+
 .md_1 {
   font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
   color: #212121;

@@ -38,18 +38,6 @@ module.exports = {
                 test: /\.vue$/,
                 use: {
                     loader: 'vue-loader',
-                    options: {
-                        // ignore space
-                        preserveWhitespace: false,
-                        // extract css
-                        extractCSS: true,
-                        transformToRequire: {
-                            video: ['src', 'poster'],
-                            source: 'src',
-                            img: 'src',
-                            image: 'xlink:href'
-                        }
-                    }
                 }
             },
 

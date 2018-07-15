@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 1200px
+        }
+
+        .test {
+            width: 300px;
+            height: 400px;
+        }
+
+        .lazy-wrap {
+            display: inline-block;
+        }
+
+        .lazy-img {
+            position: relative;
+            display: block;
+        }
+
+        .lazy-img:after {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: url(http://pic4.58cdn.com.cn/anjuke_58/7e221cf…?w=480&h=360&crop=1);
+            content: "";
+            z-index: 10;
+            right: 0px;
+            bottom: 0px;
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="lazy-wrap">
+
+
+    <img class=" test lazyimg" src="https://img.58cdn.com.cn/ui9/house/list/lazy_pic.png"
+         data-src="http://pic4.58cdn.com.cn/anjuke_58/7e221cfe9570fb464e499cf8827368fa?w=480&h=360&crop=1" alt="">
+</div>
+
+<script>
+    // mb 兼容ie8
+    function getElementsByClassName(className, tag) {
+        if (document.getElementsByClassName) {
+            return document.getElementsByClassName(className);
+        } else {
+            var results = [];
+            var elems = document.getElementsByTagName(tag || "*");
+            for (var i = 0, len = elems.length; i < len; i++) {
+                if (elems[i].className.indexOf(className) != -1) {
+                    results[results.length] = elems[i];
+                }
+            }
+            return results;
+        }
+    }
+    function inView(el, view) {
+        if (el) {
+            if (isHidden(el)) {
+                return false;
+            }
+            var box = el.getBoundingClientRect();
+            return (box.right >= view.l && box.bottom >= view.t && box.left <= view.r && box.top <= view.b);
+        }
+        else {
+            return false;
+        }
+    }
+    function isHidden(element) {
+        return (element.offsetParent === null);
+    };
+    window.Imgload = (function () {
+        var delay = 250;//消抖
+        var interval;
+        var lastTime = +new Date();
+        var imgload = {
+            init: function () {
+                this.initEvent();
+                _this.render();
+            },
+            initEvent: function () {
+                var _this = this;
+                if (window.attachEvent) { //ie
+                    window.attachEvent('onscroll', function () {
+                        _this.scroll();
+                    })
+                } else {
+                    window.addEventListener("scroll", _this.scroll, false);
+                }
+            },
+            // 鼠标滚动函数消抖
+            scroll: function () {
+                var _this=this;
+                if ((+new Date()) - lastTime > delay) {
+                    lastTime = +new Date()
+                    _this.render();
+                }
+            },
+            //定时轮训
+            render: function () {
+                var doms = getElementsByClassName("lazyimg", "img")
+                var view = {//可视区域 暂定为 窗口大小
+                    l: 0,
+                    t: 0,
+                    b: window.innerHeight || (document.documentElement && document.documentElement.clientHeight) + 200,
+                    r: window.innerWidth || (document.documentElement && document.documentElement.clientWidth)
+                }
+                for (var i = 0; i < doms.length; i++) {
+                    var el = doms[i];
+                    if (inView(el, view)) {
+                        var hasload = /(^|\s+)+(lazyloaded|lazyerr)($|\s+)/gi.test(el.getAttribute("class"))
+                        if (!hasload) {
+                            var src = el.getAttribute("data-src")
+                            el.setAttribute("imgloaded", true)
+                            function bind(el, src) {
+                                var img = new Image();
+                                img.onload = function () {
+                                    var cla_new = (el.getAttribute("class") || "").replace(/(^|\s+)+lazyimg($|\s+)/gi, "lazyloaded");
+                                    el.setAttribute("class", cla_new)
+                                    el.setAttribute("src", src);
+                                }
+                                img.onerror = function () {
+                                    var cla_new = (el.getAttribute("class") || "").replace(/(^|\s+)+lazyimg($|\s+)/gi, "lazyerr");
+                                    el.setAttribute("class", cla_new)
+                                }
+                                img.src = src;
+                            }
+                            bind(el, src)
+                        }
+                    }
+                }
+            }
+        }
+//        return imgload.init;
+    })();
+    Imgload.init();
+</script>
+</body>
+</html>

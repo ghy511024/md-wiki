@@ -1,10 +1,11 @@
 <style lang="scss">
-@import "index";
+    @import "index";
 </style>
 
 <template>
     <div class="main">
         <div class="edit-wrap">
+            <button id="save" @click="save">保存</button>
             <textarea name="" id="" cols="30" rows="10" v-model="mdstr"></textarea>
         </div>
         <div class="view-wrap">
@@ -21,7 +22,7 @@
     var html = require('remark-html');
     var report = require('vfile-reporter');
 
-    var str=`
+    var str = `
 # Print from Chrome
 You can print from Chrome using your computer or mobile device. With Google Cloud Print, you can make your printers available to you and anyone you choose.
 Learn more about
@@ -41,16 +42,31 @@ Learn more about
         methods: {
             createHtml(){
                 var _this = this;
-                remark()
-                    .use(guide)
+                remark().use(guide)
                     .use(html)
                     .process(this.mdstr, function (err, file) {
                         _this.htmls = String(file);
                     });
 
             },
-            test(){
-
+            save(){
+                var _this = this;
+                $.ajax({
+                    url: "/page/update",
+                    type: "POST",
+                    data: {doc: _this.mdstr, _id: _this._id},
+                    dataType: "json",
+                    error: function () {
+                        alert(1);
+                    },
+                    success: function (ret) {
+                        if (ret["code"] == 0) {
+                            alert("保存成功")
+                        } else {
+                            alert("保存失败")
+                        }
+                    }
+                })
             }
         },
         mounted: function () {

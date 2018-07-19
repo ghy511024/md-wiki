@@ -5,8 +5,8 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        app: ['./src/view/edit/index.js'],
-        page:['./src/view/page/page.scss']
+        app: ['./view/edit/index.js'],
+        page:['./view/page/page.scss']
     },
     output: {
         filename: '[name].js',

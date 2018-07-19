@@ -86,25 +86,25 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/view/page/page.scss":
-/*!*********************************!*\
-  !*** ./src/view/page/page.scss ***!
-  \*********************************/
+/***/ "./view/page/page.scss":
+/*!*****************************!*\
+  !*** ./view/page/page.scss ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/view/page/page.scss?");
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./view/page/page.scss?");
 
 /***/ }),
 
 /***/ 1:
-/*!***************************************!*\
-  !*** multi ./src/view/page/page.scss ***!
-  \***************************************/
+/*!***********************************!*\
+  !*** multi ./view/page/page.scss ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! ./src/view/page/page.scss */\"./src/view/page/page.scss\");\n\n\n//# sourceURL=webpack:///multi_./src/view/page/page.scss?");
+eval("module.exports = __webpack_require__(/*! ./view/page/page.scss */\"./view/page/page.scss\");\n\n\n//# sourceURL=webpack:///multi_./view/page/page.scss?");
 
 /***/ })
 

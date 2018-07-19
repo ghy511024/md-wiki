@@ -21,6 +21,7 @@
     "@nestjs/testing": "^4.5.5",
     "@nestjs/websockets": "^4.5.8",
     "cookie-parser": "^1.4.3",
+    "fmongo": "git+ssh://git@gitlab.58corp.com:fangfe/f-node-db.git#master",
     "reflect-metadata": "^0.1.12",
     "remark": "^9.0.0",
     "remark-html": "^7.0.0",
@@ -57,7 +58,9 @@
     "ts-jest": "^21.2.4",
     "ts-node": "^4.1.0",
     "tsconfig-paths": "^3.1.1",
-    "tslint": "5.3.2"
+    "tslint": "5.3.2",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.7"
   },
   "engines": {
     "node": ">=6.11.5",

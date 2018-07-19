@@ -28,7 +28,6 @@ header {
 .fe-content .primary-nav {
   display: table-cell;
   width: 320px;
-  background-color: #4285f4;
   color: #212121; }
   .fe-content .primary-nav nav {
     font-size: 13px;

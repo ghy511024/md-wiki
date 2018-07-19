@@ -22,21 +22,16 @@
     var html = require('remark-html');
     var report = require('vfile-reporter');
 
-    var str = `
-# Print from Chrome
-You can print from Chrome using your computer or mobile device. With Google Cloud Print, you can make your printers available to you and anyone you choose.
-Learn more about
-## Set up Google Cloud Print
-* Turn on your printer.
-* On your Windows or Mac computer, open Chrome.
-* At the top right, click More
-    `
     export default{
         data: function () {
             return {
-                mdstr: str,
+                _id: window.page._id,
+                mdstr: window.page.doc || "",
                 htmls: ""
             }
+        },
+        mounted:function(){
+
         },
         props: {},
         methods: {
@@ -54,7 +49,7 @@ Learn more about
                 $.ajax({
                     url: "/page/update",
                     type: "POST",
-                    data: {doc: _this.mdstr, _id: _this._id},
+                    data: {doc: _this.mdstr, _id: window.page._id},
                     dataType: "json",
                     error: function () {
                         alert(1);
@@ -77,6 +72,16 @@ Learn more about
                 .process(this.mdstr, function (err, file) {
                     _this.htmls = String(file);
                 });
+            function keyDown(e){
+                var currKey=0, e=e||event||window.event;
+                currKey = e.keyCode||e.which||e.charCode;
+                if(currKey == 83 && (e.ctrlKey||e.metaKey)){
+                    e.preventDefault();
+                    _this.save();
+                    return false;
+                }
+            }
+            document.onkeydown = keyDown;
         },
         computed: {},
         watch: {

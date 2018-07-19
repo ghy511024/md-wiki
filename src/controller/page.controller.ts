@@ -14,17 +14,28 @@ export class PageController {
         return 'Hello World!';
     }
 
-    @Get('ghy')
-    async ddd(@Res() res, @Req() request) {
-        let mdstr = fs.readFileSync('md/demo.md', "utf-8");
-        let htmlstr = await PageProcess.getHtmlByMd(mdstr);
-        res.render('page', {mdstr: mdstr, htmlstr: htmlstr});
-    }
 
     @Get('app')
     async app(@Res() res, @Req() req) {
-        let {_id} = req.query
-        res.render('app', {_id: _id});
+        let {_id} = req.query;
+        let ret = 0;
+        let page;
+        if (!_id) {
+            ret = -1;
+        }
+        if (ret == 0) {
+            page = await PageProcess.getOneByid(_id);
+            if (!page) {
+                ret = -2;
+            }
+        }
+        console.log(_id,ret);
+        if (ret == 0) {
+            res.render('app', {page: page,page_str:JSON.stringify(page)});
+        }
+        else {
+            res.render("404");
+        }
     }
 
     @Get('list')
@@ -39,7 +50,7 @@ export class PageController {
         let {_id, doc} = req.body
         let ret = 0;
         if (!!_id) {
-            _id = +new Date();
+            _id = +new Date()+"";
         }
         if (ret == 0) {
             let page = new Page({_id: _id, doc: doc});
@@ -60,7 +71,7 @@ export class PageController {
         if (!_id) {
             _id = +new Date();
         }
-        console.log(_id,"_id.........")
+        console.log(_id, "_id.........")
         if (ret == 0) {
             let page = new Page({_id: _id, doc: doc});
             console.log(page.toJSON(), ".................")

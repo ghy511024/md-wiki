@@ -1,0 +1,63 @@
+.nav-wrap {
+  ul, li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+  ul {
+    padding-left: 10px;
+  }
+  li {
+    position: relative;
+    cursor: pointer;
+    &:before {
+      position: absolute;
+      left: 0px;
+      color: hsla(0, 0%, 0%, 1);
+      content: ">";
+    }
+
+    span {
+      display: inline-block;
+      margin-left: 16px;
+    }
+    > ul {
+      height: 0px;
+      overflow: hidden;
+    }
+    &.active {
+      > ul {
+        height: auto;
+      }
+    }
+
+    // input 添加操作
+    .opwrap {
+      display: none;
+      input {
+        width: 100px;
+        border: none;
+        border-bottom: 1px solid #cccccc;
+        outline: none;
+      }
+    }
+
+    &.showadd {
+      > .opwrap {
+        display: block;
+      }
+    }
+
+    .nav-title {
+      .add-btn {
+        margin-left: 0px;
+        opacity: 0;
+      }
+      &:hover {
+        .add-btn {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

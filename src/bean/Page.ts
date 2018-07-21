@@ -5,6 +5,8 @@ const fmongo = require("fmongo");
 
 const Page = fmongo.BaseBean({
     _id: String,
+    parent: String,
     doc: String,
+    name: String,
 });
 module.exports = Page;

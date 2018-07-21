@@ -20,6 +20,7 @@ var array = [
 ]
 var map = {}
 for (var i = 0; i < array.length; i++) {
+    array[i]["name"]="nav";
     map[array[i]._id] = array[i];
 }
 

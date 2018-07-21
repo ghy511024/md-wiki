@@ -29,9 +29,9 @@ export class PageController {
                 ret = -2;
             }
         }
-        console.log(_id,ret);
+        console.log(_id, ret);
         if (ret == 0) {
-            res.render('app', {page: page,page_str:JSON.stringify(page)});
+            res.render('app', {page: page, page_str: JSON.stringify(page)});
         }
         else {
             res.render("404");
@@ -47,15 +47,15 @@ export class PageController {
 
     @Post('create')
     async create(@Res() res, @Req() req) {
-        let {_id, doc} = req.body
+        let {pid, name} = req.body
         let ret = 0;
-        if (!!_id) {
-            _id = +new Date()+"";
+        if (!pid && !name) {
+            ret = -1;
         }
         if (ret == 0) {
-            let page = new Page({_id: _id, doc: doc});
-            console.log(page.toJSON(), ".................")
-            let b = await PageProcess.update(_id, page, false);
+            var _id = (+new Date()) + ""
+            let page = new Page({_id: _id, name: name, parent: pid});
+            let b = await PageProcess.update(_id, page, true);
             if (!b) {
                 ret = -1;
             }

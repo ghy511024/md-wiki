@@ -14,12 +14,11 @@ export class PageController {
         return 'Hello World!';
     }
 
-
     @Get('app')
     async app(@Res() res, @Req() req) {
         let {_id} = req.query;
         let ret = 0;
-        let page;
+        let page, navs = {};
         if (!_id) {
             ret = -1;
         }
@@ -29,11 +28,17 @@ export class PageController {
                 ret = -2;
             }
         }
-        console.log(_id,ret);
         if (ret == 0) {
-            res.render('app', {page: page,page_str:JSON.stringify(page)});
+            navs = await PageProcess.getNavs(_id);
         }
-        else {
+
+        console.log(_id, ret);
+        if (ret == 0) {
+            res.render('app', {page: page, page_str: JSON.stringify(page), navs: JSON.stringify(navs)});
+        }
+        else if (ret == -1) {
+            res.render('app', {page: {}, page_str: JSON.stringify({})});
+        } else {
             res.render("404");
         }
     }
@@ -41,21 +46,20 @@ export class PageController {
     @Get('list')
     async list(@Res() res, @Req() request) {
         let list = await  PageProcess.getList();
-
         res.send(list);
     }
 
     @Post('create')
     async create(@Res() res, @Req() req) {
-        let {_id, doc} = req.body
+        let {pid, name} = req.body
         let ret = 0;
-        if (!!_id) {
-            _id = +new Date()+"";
+        if (!pid && !name) {
+            ret = -1;
         }
         if (ret == 0) {
-            let page = new Page({_id: _id, doc: doc});
-            console.log(page.toJSON(), ".................")
-            let b = await PageProcess.update(_id, page, false);
+            var _id = (+new Date()) + ""
+            let page = new Page({_id: _id, name: name, parent: pid});
+            let b = await PageProcess.update(_id, page, true);
             if (!b) {
                 ret = -1;
             }

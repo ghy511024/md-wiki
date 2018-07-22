@@ -20,6 +20,7 @@ var array = [
 ]
 var map = {}
 for (var i = 0; i < array.length; i++) {
+    array[i]["name"] = "nav";
     map[array[i]._id] = array[i];
 }
 
@@ -35,3 +36,23 @@ for (var i = 0; i < array.length; i++) {
     addNode(array[i]._id, array[i].parent);
 }
 console.log(JSON.stringify(root));
+
+var m = {
+    "_id": "root",
+    "type": "page-nav",
+    "children": [{
+        "_id": "1532001794920",
+        "name": "test",
+        "type": "page-nav",
+        "parent": "root",
+        "children": [{
+            "_id": "1532235168414",
+            "name": "test1",
+            "type": "page-nav",
+            "parent": "1532001794920",
+            "children": [{"_id": "1532235677251", "name": "test1_1", "type": "page-nav", "parent": "1532235168414"}]
+        }],
+        "active": true,
+        "isopen": true
+    }]
+}

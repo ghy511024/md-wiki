@@ -13,7 +13,7 @@
             <div class="edit-wrap">
                 <input class="title-input" type="text" :value="title">
                 <ul class="operate-list">
-                    <li></li>
+                    <li><Icon size="20" type="android-delete"></Icon></li>
                 </ul>
                 <textarea name="" id="" cols="30" rows="10" v-model="mdstr"></textarea>
             </div>
@@ -23,17 +23,6 @@
                 </div>
             </div>
         </div>
-        <!--<div class="create-folder-wrap">-->
-        <!--<Form :model="formItem" :label-width="80">-->
-        <!--<FormItem label="文件夹名字">-->
-        <!--<Input placeholder="Enter something..."></Input>-->
-        <!--</FormItem>-->
-        <!--<FormItem>-->
-        <!--<Button type="primary">Submit</Button>-->
-        <!--<Button type="ghost" style="margin-left: 8px">Cancel</Button>-->
-        <!--</FormItem>-->
-        <!--</Form>-->
-        <!--</div>-->
     </div>
 </template>
 <script>
@@ -53,7 +42,6 @@
             }
         },
         mounted: function () {
-            console.log("asdfasdf")
             var _map = {}
             for (var i = 0; i < this.navs.length; i++) {
                 _map[this.navs[i]._id] = Object.assign({
@@ -87,9 +75,9 @@
                     },
                     success: function (ret) {
                         if (ret["code"] == 0) {
-                            alert("保存成功")
+                            _this.$Message.success('保存成功');
                         } else {
-                            alert("保存失败")
+                            _this.$Message.error('保存失败 code:' + data.code);
                         }
                     }
                 })

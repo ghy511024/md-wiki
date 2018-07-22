@@ -70,18 +70,18 @@ export class PageController {
 
     @Post('update')
     async update(@Res() res, @Req() req) {
-        let {_id, doc} = req.body
+        let {_id, doc, name} = req.body
         let ret = 0;
         if (!_id) {
-            _id = +new Date();
+            ret = -1;
         }
         console.log(_id, "_id.........")
         if (ret == 0) {
-            let page = new Page({_id: _id, doc: doc});
+            let page = new Page({_id: _id, doc: doc, name: name});
             console.log(page.toJSON(), ".................")
             let b = await PageProcess.update(_id, page, false);
             if (!b) {
-                ret = -1;
+                ret = -2;
             }
         }
         var result = {code: ret, _id: _id};

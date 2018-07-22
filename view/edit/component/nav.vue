@@ -13,10 +13,10 @@
             </div>
 
             <span class="nav-title">
-                <span @click="stop">
-                    <a v-show="!map[component._id].edit_title" @click="jump(component._id)">{{component.name}}
+                <span @click="stop" class="title">
+                    <a v-show="!map[component._id].edit_title" @click="jump(component._id)">{{map[component._id].name}}
                     </a>
-                    <input v-show="map[component._id].edit_title" type="text" :value="component.name">
+                    <input v-show="map[component._id].edit_title" type="text" v-model="map[component._id].name">
                 </span>
                 <span class="edit-btn" v-show="!map[component._id].edit_title">
                     <Icon type="edit" size="13" @click.native="show_title_edit(component._id,true)"></Icon>
@@ -25,7 +25,7 @@
                     <Icon type="android-add" size="14" @click.native="show_add(component._id)"></Icon>
                 </span>
                 <span class="title-save" v-show="map[component._id].edit_title">
-                      <Icon type="checkmark-round" @click.native="save(component._id)"></Icon>
+                      <Icon type="checkmark-round" @click.native="update_name(component._id)"></Icon>
                 </span>
                 <span class="title-save-cancel" v-show="map[component._id].edit_title">
                      <Icon type="android-close" @click.native="show_title_edit(component._id,false)"></Icon>
@@ -83,12 +83,11 @@
             show_add: function (_id) {
                 this.map[_id].isadd = !this.map[_id].isadd;
             },
-            show_title_edit: function (_id,isedit) {
+            show_title_edit: function (_id, isedit) {
 //                console.log("_id", _id);
                 this.map[_id].edit_title = isedit;
 
-            }
-            , save: function (_id) {
+            }, save: function (_id) {
                 console.log(this.map[_id].value, "sdfsd")
                 var value = this.map[_id].value;
                 $.ajax({
@@ -101,6 +100,29 @@
                     success: function (data) {
                         console.log(JSON.stringify(data));
                         window.location.search = "_id=" + data._id;
+                    }
+                })
+            },
+            update_name: function (_id) {
+                var _this = this;
+                var name = this.map[_id].name;
+                $.ajax({
+                    url: "/page/update",
+                    data: ({_id: _id, name: name}),
+                    type: "POST",
+                    error: function () {
+                        alert("网络异常")
+                    },
+                    success: function (data) {
+                        if (data.code == 0) {
+                            _this.$Message.success('修改成功');
+                            _this.map[_id].edit_title = false;
+                        }
+                        else {
+                            _this.$Message.error("修改失败,code:"+data.code);
+                            _this.map[_id].edit_title = false;
+                        }
+
                     }
                 })
             },

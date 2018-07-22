@@ -1,3 +1,5 @@
+@import "../../style/color";
+
 .nav-wrap {
   font-size: 13px;
   .ivu-icon {
@@ -91,21 +93,25 @@
     }
 
     .nav-title {
+      width: 100%;
+      .title {
+        width: 100%;
+      }
       .add-btn, .edit-btn {
-        margin-left: 3px;
+        //margin-left: 3px;
         opacity: 0;
       }
-      .title-save, .title-save-cancel {
-        width: 15px;
-        height: 15px;
+      .add-btn, .edit-btn, .title-save, .title-save-cancel {
+        width: 12px;
+        height: 12px;
         text-align: center;
         position: absolute;
-        right: 16px;
+        right: 12px;
         top: 0px;
       }
-      .title-save-cancel {
+      .add-btn, .title-save-cancel {
         position: absolute;
-        right: 1px;
+        right: 0px;
         top: 0px;
       }
       &:hover {
@@ -114,7 +120,16 @@
         }
       }
       a {
+        padding-right: 24px;
+        height: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+        color: var(--blue);
+        width: 100%;
         &:hover {
+          color: var(--blue-light);
           text-decoration: underline;
         }
       }
@@ -129,6 +144,7 @@
         border-bottom: 1px solid #ccc;
         width: 100%;
         padding-right: 30px;
+        height: 20px;
       }
     }
   }

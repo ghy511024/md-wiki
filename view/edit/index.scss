@@ -1,0 +1,42 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+
+#app, .main {
+  width: 100%;
+  height: 100%;
+}
+
+.edit-wrap, .view-wrap {
+  width: 50%;
+  height: 100%;
+  float: left;
+  box-sizing: border-box;
+}
+
+.edit-wrap {
+  textarea {
+    width: 100%;
+    height: 100%;
+    padding: 40px 40px 80px;
+    resize: none;
+    border: none;
+    outline: none;
+  }
+}
+
+.view-wrap {
+  height: 100%;
+  overflow-y: auto;
+  color: #333;
+  background-color: rgb(251, 251, 251);
+  padding: 40px 40px 80px;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+
+
+@import "../style/md_1";

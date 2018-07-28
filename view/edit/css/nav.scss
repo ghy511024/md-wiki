@@ -1,10 +1,15 @@
-@import "../../style/color";
+@import "../css/variables";
 
 .nav-wrap {
-  font-size: 13px;
+  font-size: 14px;
+  color: $nav-item-color_gray;
+  input {
+    color: $nav-item-color;
+  }
   .ivu-icon {
+    color: $nav-item-icon-color;
     &:hover {
-      color: #d46f16;
+      color: $nav-item-icon-color_hover;
     }
   }
   ul, li {
@@ -13,27 +18,12 @@
     list-style: none;
   }
   ul {
-    padding-left: 12px;
+    //padding-left: 12px;
     transition: all 0.4s;
   }
   li {
     position: relative;
     cursor: pointer;
-    .my-icon {
-      position: absolute;
-      left: -15px;
-      width: 15px;
-      width: 15px;
-      transform: rotate(0deg);
-      transition: transform 0.4s;
-      i {
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        vertical-align: middle;
-      }
-    }
-
     span {
       display: inline-block;
       //margin-left: 16px;
@@ -51,10 +41,15 @@
         transform: rotate(90deg);
       }
     }
+
+    .nav-title:hover {
+      background: $nav-item-bg-color_hover;
+      color: $nav-item-color;
+    }
     &.active {
       > .nav-title {
-        background: #ccc;
-
+        background: $nav-item-bg-color_active;
+        color: $nav-item-color;
       }
     }
     // input 添加操作
@@ -94,57 +89,89 @@
 
     .nav-title {
       width: 100%;
-      .title {
-        width: 100%;
-      }
+      position: relative;
       .add-btn, .edit-btn {
-        //margin-left: 3px;
         opacity: 0;
       }
       .add-btn, .edit-btn, .title-save, .title-save-cancel {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         text-align: center;
         position: absolute;
-        right: 12px;
-        top: 0px;
+        right: 16px;
+        top: 50%;
+        margin-top: -7px;
       }
       .add-btn, .title-save-cancel {
         position: absolute;
         right: 0px;
-        top: 0px;
       }
       &:hover {
         .add-btn, .edit-btn {
           opacity: 1;
         }
       }
-      a {
-        padding-right: 24px;
-        height: 16px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: inline-block;
-        color: var(--blue);
-        width: 100%;
-        &:hover {
-          color: var(--blue-light);
-          text-decoration: underline;
-        }
+      .title {
+        width: calc(100% - 20px);
       }
       input {
         outline: none;
-        position: absolute;
         top: 0px;
         background: transparent;
-        font-size: 13px;
-        line-height: 20px;
+        //font-size: 13px;
+        //line-height: 20px;
         border: none;
-        border-bottom: 1px solid #ccc;
+        width: calc(100% - 20px);
+        //padding-right: 30px;
+        box-shadow: 0px 1px 0px 0px #ccc;
+      }
+    }
+    .my-icon {
+      display: inline-block;
+      transform: rotate(0deg);
+      transition: transform 0.4s;
+      width: 14px;
+      height: 14px;
+      i {
         width: 100%;
-        padding-right: 30px;
-        height: 20px;
+        height: 100%;
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+    .nav-title {
+      &.t0 {
+        padding: 0.4rem 2rem 0.4rem calc(0rem - 2px);
+      }
+      &.t1 {
+        padding: 0.4rem 2rem 0.4rem calc(1rem - 2px);
+      }
+      &.t2 {
+        padding: 0.4rem 2rem 0.4rem calc(2rem - 2px);
+      }
+      &.t3 {
+        padding: 0.4rem 2rem 0.4rem calc(3rem - 2px);
+      }
+      &.t4 {
+        padding: 0.4rem 2rem 0.4rem calc(4rem - 2px);
+      }
+      &.t5 {
+        padding: 0.4rem 2rem 0.4rem calc(5rem - 2px);
+      }
+      &.t6 {
+        padding: 0.4rem 2rem 0.4rem calc(6rem - 2px);
+      }
+      &.t7 {
+        padding: 0.4rem 2rem 0.4rem calc(7rem - 2px);
+      }
+      &.t8 {
+        padding: 0.4rem 2rem 0.4rem calc(8rem - 2px);
+      }
+      &.t9 {
+        padding: 0.4rem 2rem 0.4rem calc(9rem - 2px);
+      }
+      &.t10 {
+        padding: 0.4rem 2rem 0.4rem calc(10rem - 2px);
       }
     }
   }

@@ -17,28 +17,16 @@ export class PageController {
     @Get('app')
     async app(@Res() res, @Req() req) {
         let {_id} = req.query;
+        console.log(req.url,"req",req.originalUrl)
         let ret = 0;
         let page, navs = {};
-        if (!_id) {
-            ret = -1;
-        }
-        if (ret == 0) {
-            page = await PageProcess.getOneByid(_id);
-            if (!page) {
-                ret = -2;
-            }
-        }
         if (ret == 0) {
             navs = await PageProcess.getNavs(_id);
         }
-
-        console.log(_id, ret);
         if (ret == 0) {
             res.render('app', {page: page, page_str: JSON.stringify(page), navs: JSON.stringify(navs)});
         }
-        else if (ret == -1) {
-            res.render('app', {page: {}, page_str: JSON.stringify({})});
-        } else {
+        else {
             res.render("404");
         }
     }
@@ -88,4 +76,17 @@ export class PageController {
         res.send(result);
     }
 
+    @Get('info')
+    async info(@Res() res, @Req() req) {
+        let {_id} = req.query
+        let ret = 0, page;
+        if (!_id) {
+            ret = -1;
+        }
+        if (ret == 0) {
+            page = await PageProcess.getOneByid(_id);
+        }
+        var result = {code: ret, page: page};
+        res.send(result);
+    }
 }

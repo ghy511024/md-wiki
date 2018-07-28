@@ -58,7 +58,8 @@ class PageProcess extends fmongo.BaseDatalayer {
         for (var i = 0; i < list.length; i++) {
             addNode(list[i]._id, list[i].parent);
         }
-        map[_id].active = true;
+
+        map[_id] && (map[_id].active = true);
         var pid = _id;
         while (map[pid]) {
             map[pid].isopen = true;

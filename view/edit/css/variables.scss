@@ -1,0 +1,20 @@
+@import "./lib/color_1";
+
+/* ==========  COLORS  ========== */
+
+/* ==========  Layout  ========== */
+$layout-nav-color: $primary-color;
+$layout-drawer-bg-color: $primary-color-dark;
+
+// nav-tree
+$nav-item-bg-color_active: $primary-color;
+$nav-item-bg-color_hover: rgba($primary-color, 0.7);
+$nav-item-color_gray: rgba($primary-color-text, 0.8);
+$nav-item-color: $primary-color-text;
+$nav-item-icon-color: $accent-color;
+$nav-item-icon-color_hover: rgba($accent-color, 0.8);
+
+// edit wrap 编辑区域
+
+$edit-header-nav-bg-color: $accent-color;
+

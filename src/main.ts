@@ -26,7 +26,7 @@ async function bootstrap() {
     app.set('view engine', 'html');
     app.engine('html', require('shtm').__express);
 
-    await app.listen(3000);
-    console.log("start app listen:",3000)
+    await app.listen(3100);
+    console.log("start app listen:",3100)
 }
 bootstrap();

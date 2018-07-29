@@ -21,7 +21,6 @@
     "@nestjs/testing": "^4.5.5",
     "@nestjs/websockets": "^4.5.8",
     "cookie-parser": "^1.4.3",
-    "fmongo": "git+http://gonghongyu:ghy511024@gitlab.58corp.com/fangfe/f-node-db.git#master",
     "iview": "^2.14.3",
     "reflect-metadata": "^0.1.12",
     "remark": "^9.0.0",

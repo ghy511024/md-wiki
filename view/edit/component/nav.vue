@@ -8,7 +8,7 @@
             :_index="component._id"
         >
             <span :class="'nav-title t'+nav_deep">
-                <div v-if="component.children" class="my-icon" @click="liclick(component._id)">
+                <div v-if="component.children" class="open-icon" @click="liclick(component._id)">
                     <Icon type="arrow-right-b"></Icon>
                 </div>
                 <span @click="stop" class="title">
@@ -37,7 +37,7 @@
                        @blur="handle_blur(component._id,'save')"
                 >
                 <span class="title-save">
-                    <Icon type="checkmark-round" @click.native="save(component._id)"></Icon>
+                    <Icon type="checkmark-round" @click.native="create(component._id)"></Icon>
                 </span>
                 <span class="title-save-cancel">
                      <Icon type="android-close" @click.native="show_add(component._id,false)"></Icon>
@@ -58,6 +58,7 @@
         data: function () {
             return {
                 map: {},
+                lock: false,
             }
         },
         name: 'nav',
@@ -65,7 +66,7 @@
         computed: {},
         created: function () {
             for (var i = 0; i < this.navs.length; i++) {
-                this.map[this.navs[i]._id]=this.navs[i];
+                this.map[this.navs[i]._id] = this.navs[i];
             }
         },
         mounted: function () {
@@ -81,33 +82,37 @@
                 this.map[_id].isadd = isshow ? isshow : !this.map[_id].isadd;
             },
             show_title_edit: function (_id, isedit) {
-//                console.log("_id", _id);
                 this.map[_id].edit_title = isedit;
             },
             // 失去焦点保存,或者更名
             handle_blur(_id, type){
-                if (type == "save") {
-                    this.save(_id);
-                } else if (type == "rename") {
-                    this.update_name(_id);
+                if (!this.lock) {
+                    this.lock = true;
+                    if (type == "save") {
+                        this.create(_id);
+                    } else if (type == "rename") {
+                        this.update(_id);
+                    }
                 }
             },
-            save: function (_id) {
-                console.log(this.map[_id].value, "sdfsd")
+            create: function (_id) {
                 var value = this.map[_id].value;
+                var _this = this;
                 $.ajax({
                     url: "/page/create",
                     data: ({pid: _id, name: value}),
                     type: "POST",
                     error: function () {
-                        alert("网络异常")
+                        alert("网络异常");
+                        _this.lock = false;
                     },
                     success: function (data) {
+                        _this.lock = false;
                         window.location.search = "_id=" + data._id;
                     }
                 })
             },
-            update_name: function (_id) {
+            update: function (_id) {
                 var _this = this;
                 var name = this.map[_id].name;
                 $.ajax({
@@ -118,6 +123,7 @@
                         alert("网络异常")
                     },
                     success: function (data) {
+
                         if (data.code == 0) {
                             _this.$Message.success('修改成功');
                             _this.map[_id].edit_title = false;
@@ -126,6 +132,7 @@
                             _this.$Message.error("修改失败,code:" + data.code);
                             _this.map[_id].edit_title = false;
                         }
+                        _this.lock = false;
                     }
                 })
             },

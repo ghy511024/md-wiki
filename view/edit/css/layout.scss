@@ -1,4 +1,3 @@
-
 @import "./variables";
 
 /* ==========  Layout  ========== */
@@ -72,11 +71,14 @@
 
 .layout_content {
   position: relative;
-  display: inline-block;
+  display: block;
   overflow-y: auto;
   overflow-x: hidden;
   flex-grow: 1;
   z-index: 1;
   margin-left: 240px;
+  flex-direction: row;
+  display: flex;
+  flex-flow: row;
 }
 

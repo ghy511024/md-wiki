@@ -2,10 +2,10 @@
  * Created by cyl on 2018/5/13.
  */
 import {Controller, Get, Post, Req, Res, Middleware, NestMiddleware} from '@nestjs/common';
-var PageProcess = require("../process/page.process");
+var PageProcess = require("../process/page.process.ts");
 var Page = require("../bean/page");
 var fs = require("fs");
-
+const RT = require('../util/UT.ts');
 
 @Controller('page')
 export class PageController {
@@ -17,7 +17,7 @@ export class PageController {
     @Get('app')
     async app(@Res() res, @Req() req) {
         let {_id} = req.query;
-        console.log(req.url,"req",req.originalUrl)
+        console.log(req.url, "req", req.originalUrl)
         let ret = 0;
         let page, navs = {};
         if (ret == 0) {
@@ -58,15 +58,13 @@ export class PageController {
 
     @Post('update')
     async update(@Res() res, @Req() req) {
-        let {_id, doc, name} = req.body
+        let {_id, doc = "", name} = req.body
         let ret = 0;
-        if (!_id) {
+        if (!_id || (name == null && doc == null)) {
             ret = -1;
         }
-        console.log(_id, "_id.........")
         if (ret == 0) {
             let page = new Page({_id: _id, doc: doc, name: name});
-            console.log(page.toJSON(), ".................")
             let b = await PageProcess.update(_id, page, false);
             if (!b) {
                 ret = -2;
@@ -89,4 +87,30 @@ export class PageController {
         var result = {code: ret, page: page};
         res.send(result);
     }
+
+
+    @Post('delete')
+    async delete(@Res() res, @Req() req) {
+        let {_id} = req.body
+        let ret = 0, page;
+        if (!_id) {
+            ret = RT.PARAMETER_ERR;
+        }
+        if (ret == 0) {
+            let list = await  PageProcess.getList({parent: _id});
+            if (list != null && list.length > 0) {
+                ret = RT.PAGE_HAS_CHILD;
+            }
+        }
+        if (ret == 0) {
+            let b = await PageProcess.delete(_id);
+            if (!b) {
+                ret = RT.DB_DELETE_ERR;
+            }
+        }
+        var result = RT.result(ret);
+        res.send(result);
+    }
 }
+
+

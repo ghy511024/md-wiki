@@ -2,19 +2,25 @@
 
 /* ==========  COLORS  ========== */
 
-/* ==========  Layout  ========== */
-$layout-nav-color: $primary-color;
-$layout-drawer-bg-color: $primary-color-dark;
+// layout
+$layout-nav-color: $primary-color-dark;
+$layout-drawer-bg-color: $primary-color;
 
 // nav-tree
-$nav-item-bg-color_active: $primary-color;
-$nav-item-bg-color_hover: rgba($primary-color, 0.7);
+$nav-item-bg-color_active: rgba($primary-color-dark,0.6);
+$nav-item-bg-color_hover: rgba($primary-color-dark, 0.4);
 $nav-item-color_gray: rgba($primary-color-text, 0.8);
 $nav-item-color: $primary-color-text;
-$nav-item-icon-color: $accent-color;
-$nav-item-icon-color_hover: rgba($accent-color, 0.8);
+$nav-item-icon-color: $primary-color-text;
+$nav-item-icon-color_hover: rgba($primary-color-text, 0.8);
 
 // edit wrap 编辑区域
+$edit-header-nav-bg-color: rgba($primary-color,0.6);
+$edit-header-nav-icon-color: rgba($accent-color,1);
+$edit-header-nav-icon-bg-color: rgba($primary-color,1);
+$edit-header-nav-icon-bg-color_hover: rgba($primary-color-dark,1);
+$edit-textarea-color: $primary-text-color;
 
-$edit-header-nav-bg-color: $accent-color;
 
+
+/* ==========  FONT  ========== */

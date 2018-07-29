@@ -1,5 +1,13 @@
 @import "./css/edit";
 @import "./css/nav";
+@import "../style/B_1";
+
+
+@import "./css/layout";
+
+
+
+
 
 html, body {
   height: 100%;
@@ -28,22 +36,16 @@ html, body {
 
 .edit-wrap, .view-wrap {
   width: 50%;
-  height: 100%;
-  position: absolute;
-  top:0px;
-
   margin: 0px;
-  box-sizing: border-box;
+  overflow: hidden;
 }
-
 
 .view-wrap {
   left: 50%;
-  height: 100%;
   overflow-y: auto;
   color: #333;
   background-color: rgb(251, 251, 251);
-  padding: 40px 40px 80px;
+  padding: 8px 40px 80px;
   font-size: 16px;
   line-height: 1.75;
 }
@@ -56,8 +58,7 @@ html, body {
   border-radius: 5px;
 }
 
-@import "../style/md_1";
-@import "./css/layout";
+
 
 
 .md-drawer-header {

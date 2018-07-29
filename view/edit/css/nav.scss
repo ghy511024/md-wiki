@@ -37,7 +37,7 @@
       > ul {
         height: auto;
       }
-      > .my-icon {
+      > span >.open-icon {
         transform: rotate(90deg);
       }
     }
@@ -113,23 +113,21 @@
       }
       .title {
         width: calc(100% - 20px);
+        >span{width:100%}
       }
       input {
         outline: none;
         top: 0px;
         background: transparent;
-        //font-size: 13px;
-        //line-height: 20px;
         border: none;
         width: calc(100% - 20px);
-        //padding-right: 30px;
         box-shadow: 0px 1px 0px 0px #ccc;
       }
     }
-    .my-icon {
+    .open-icon {
       display: inline-block;
       transform: rotate(0deg);
-      transition: transform 0.4s;
+      transition: transform 0.3s;
       width: 14px;
       height: 14px;
       i {

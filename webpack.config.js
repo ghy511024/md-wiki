@@ -43,7 +43,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new ExtractTextPlugin({ // define where to save the file
+        new ExtractTextPlugin({ // define where to create the file
             filename: '[name].css',// css 产出路径
         }),
     ]

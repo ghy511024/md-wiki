@@ -34,7 +34,6 @@
             </span>
             <div v-show="map[component._id].isadd==true" :class="'nav-title nav-operate t'+nav_deep" @click="stop">
                 <input type="text" v-model="map[component._id].value"
-                       @blur="handle_blur(component._id,'save')"
                 >
                 <span class="title-save">
                     <Icon type="checkmark-round" @click.native="create(component._id)"></Icon>
@@ -108,7 +107,8 @@
                     },
                     success: function (data) {
                         _this.lock = false;
-                        window.location.search = "_id=" + data._id;
+                        window.location.href=window.location.href.replace(/_id=.*/gi,"_id="+ data._id);
+                        window.location.reload();
                     }
                 })
             },
@@ -123,7 +123,6 @@
                         alert("网络异常")
                     },
                     success: function (data) {
-
                         if (data.code == 0) {
                             _this.$Message.success('修改成功');
                             _this.map[_id].edit_title = false;

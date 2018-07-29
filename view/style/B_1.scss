@@ -111,7 +111,7 @@ $color_code: $divider-color;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
+    font-weight: 500;
     padding: 0;
     font-style: bold !important;
     color: $color_title !important;
@@ -119,23 +119,26 @@ $color_code: $divider-color;
   }
 
   h1 {
-    font-size: 26px !important;
+    font-size: 32px !important;
     border-bottom: 1px solid #ddd !important;
   }
 
   h2 {
-    font-size: 20px !important;
+    font-size: 28px !important;
     border-bottom: 1px solid #eee !important;
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   h4 {
-    font-size: 16px;
+    font-size: 18px;
   }
   h5 {
+    font-size: 16px;
+  }
+  h6{
     font-size: 14px;
   }
   table {

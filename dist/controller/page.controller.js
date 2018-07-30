@@ -98,6 +98,9 @@ let PageController = class PageController {
             }
             if (ret == 0) {
                 page = yield PageProcess.getOneByid(_id);
+                if (!page) {
+                    ret = -3;
+                }
             }
             var result = { code: ret, page: page };
             res.send(result);

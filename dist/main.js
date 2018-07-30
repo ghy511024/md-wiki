@@ -25,8 +25,8 @@ function bootstrap() {
         app.set('views', path.join(__dirname, '../src/views'));
         app.set('view engine', 'html');
         app.engine('html', require('shtm').__express);
-        yield app.listen(3100);
-        console.log("start app listen:", 3100);
+        yield app.listen(3700);
+        console.log("start app listen:", 3700);
     });
 }
 bootstrap();

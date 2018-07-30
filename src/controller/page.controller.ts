@@ -84,6 +84,9 @@ export class PageController {
         }
         if (ret == 0) {
             page = await PageProcess.getOneByid(_id);
+            if (!page) {
+                ret = -3;
+            }
         }
         var result = {code: ret, page: page};
         res.send(result);

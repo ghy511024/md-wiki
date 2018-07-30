@@ -18,14 +18,21 @@ function del(_id, vaueInstance) {
         },
         success: function (ret) {
             if (ret.code == 0) {
-                var array_new = p_page.children.filter(function (ele) {
-                    return ele != page;
-                })
-                if (array_new == null || array_new.length == 0) {
-                    array_new = null;
+                if (p_page) {
+                    p_page.children = p_page.children || []
+                    var array_new = p_page.children.filter(function (ele) {
+                        return ele != page;
+                    })
+                    if (array_new == null || array_new.length == 0) {
+                        array_new = null;
+                    }
+                    p_page.children = array_new;
+                    window.location.hash = "_id=" + p_page._id;
                 }
-                p_page.children = array_new;
-                window.location.hash = "_id=" + p_page._id;
+                else {
+                    window.location.hash = "";
+                    window.location.reload();
+                }
             }
             else {
                 alert("删除失败" + ret.desc);

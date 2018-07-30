@@ -19,8 +19,22 @@
                              :active_id="active_id"
                         >
                         </div>
+                        <!--添加新页面-->
+                        <div v-show="is_show_create_page" class="nav-title nav-operate t1">
+                            <input type="text" v-model="new_name"
+                            >
+                            <span class="title-save">
+                                <Icon type="checkmark-round" @click.native="createPage"></Icon>
+                            </span>
+                            <span class="title-save-cancel">
+                                <Icon type="android-close"></Icon>
+                            </span>
+                        </div>
                     </div>
                 </nav>
+                <footer class="md-drawer-footer">
+                    <button @click="is_show_create_page=true">添加分类</button>
+                </footer>
             </div>
             <main class="layout_content">
                 <div class="edit-wrap">
@@ -28,16 +42,13 @@
                     <ul class="operate-list">
                         <li @click="show_delete_dailog=true">
                             <Icon size="20" type="android-delete"></Icon>
-                            <!--<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">-->
-                            <!--<path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"/>-->
-                            <!--</svg>-->
                             <Modal
                                     v-model="show_delete_dailog"
                                     title="删除文章"
                                     @on-ok="deletepage"
-                                    @on-cancel="console.log('明智')"
+                                    @on-cancel="console.log('不删除是明智的')"
                             >
-                                <p>删除后电脑会在5分钟后死机，确认删除？</p>
+                                <p>删除后整个人精神都补好了，确认删除？</p>
                             </Modal>
                         </li>
                     </ul>
@@ -62,6 +73,7 @@
     var treeData = require('./js/treeMap');
     var autoSave = require('./js/autoSave');
     var deleteBusiness = require('./js/deleteBusiness');
+    var createPage = require('./js/createPage');
     export default{
         data: function () {
             return {
@@ -72,7 +84,9 @@
                 navs: treeData["navs"],
                 map: treeData["map"],
                 active_id: window.active_id || "root",// 当前活动id，
-                show_delete_dailog: false
+                show_delete_dailog: false,
+                is_show_create_page: false,
+                new_name: "",// 根页面页面名
             }
         },
         created: function () {
@@ -92,7 +106,6 @@
                     .process(str, function (err, file) {
                         _this.htmls = String(file);
                     });
-
             },
             save(istip = true){
                 var _this = this;
@@ -119,7 +132,6 @@
             },
             changePage(_id){
                 var _this = this;
-                console.log("开始请求")
                 $.ajax({
                     url: "/page/info",
                     type: "GET",
@@ -150,6 +162,23 @@
                     _id = __;
                 })
                 return _id;
+            },
+            // 添加新的分类
+            createPage: function () {
+                var new_name = this.new_name;
+                var _this = this;
+                alert(1)
+                $.ajax({
+                    url: "/page/create",
+                    data: ({pid: "root", name: new_name}),
+                    type: "POST",
+                    error: function () {
+                    },
+                    success: function (data) {
+                        window.location.href = window.location.href.replace(/_id=.*/gi, "_id=" + data._id);
+                        window.location.reload();
+                    }
+                })
             }
         },
         mounted: function () {

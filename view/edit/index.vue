@@ -133,7 +133,7 @@
             changePage(_id){
                 var _this = this;
                 $.ajax({
-                    url: "/page/info",
+                    url: "info",
                     type: "GET",
                     data: {_id: _id},
                     dataType: "json",

@@ -98,7 +98,7 @@
                 var value = this.map[_id].value;
                 var _this = this;
                 $.ajax({
-                    url: "/page/create",
+                    url: "create",
                     data: ({pid: _id, name: value}),
                     type: "POST",
                     error: function () {
@@ -116,7 +116,7 @@
                 var _this = this;
                 var name = this.map[_id].name;
                 $.ajax({
-                    url: "/page/update",
+                    url: "update",
                     data: ({_id: _id, name: name}),
                     type: "POST",
                     error: function () {

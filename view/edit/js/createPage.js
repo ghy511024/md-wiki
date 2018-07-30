@@ -7,7 +7,7 @@ var createPage = function (_id, name, callback) {
         callback("参数异常")
     }
     $.ajax({
-        url: "/page/create",
+        url: "create",
         data: ({pid: _id, name: name}),
         type: "POST",
         error: function () {

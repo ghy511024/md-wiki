@@ -1,7 +1,23 @@
 @import "../css/variables";
 
+.md-drawer-header {
+  width: 100%;
+  height: $drawer-logo-wrap-height;
+  position: relative;
+  img {
+    width: 100px;
+    height: 100px;
+    margin: 0px auto;
+    position: relative;
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+    top: 20px;
+  }
+}
+
 .nav-wrap {
-  font-size: 14px;
+  font-size: 13px;
   color: $nav-item-color_gray;
   input {
     color: $nav-item-color;
@@ -37,7 +53,7 @@
       > ul {
         height: auto;
       }
-      > span >.open-icon {
+      > span > .open-icon {
         transform: rotate(90deg);
       }
     }
@@ -113,14 +129,16 @@
       }
       .title {
         width: calc(100% - 20px);
-        >span{width:100%}
+        > span {
+          width: 100%
+        }
       }
       input {
         outline: none;
         top: 0px;
         background: transparent;
         border: none;
-        width: calc(100% - 20px);
+        width: 100%;
         box-shadow: 0px 1px 0px 0px #ccc;
       }
     }

@@ -7,7 +7,10 @@
             <header class="layout_header">
             </header>
             <div class="layout_drawer">
-                <header class="md-drawer-header"></header>
+                <header class="md-drawer-header">
+                    <img src="https://pic7.58cdn.com.cn/nowater/fangfe/n_v295af6ac32e104321ab6a1fb81591cb32.png"
+                         alt="markdown">
+                </header>
                 <nav class="md-navigation">
                     <div class="nav-wrap">
                         <div v-if="navs.children" :is="navs.type"
@@ -26,7 +29,7 @@
                         <li @click="show_delete_dailog=true">
                             <Icon size="20" type="android-delete"></Icon>
                             <!--<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">-->
-                                <!--<path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"/>-->
+                            <!--<path d="M12 38c0 2.21 1.79 4 4 4h16c2.21 0 4-1.79 4-4V14H12v24zM38 8h-7l-2-2H19l-2 2h-7v4h28V8z"/>-->
                             <!--</svg>-->
                             <Modal
                                     v-model="show_delete_dailog"

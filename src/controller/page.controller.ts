@@ -8,7 +8,7 @@ var fs = require("fs");
 import Page from '../bean/page'
 const RT = require('../util/UT');
 
-@Controller('wiki')
+@Controller('page')
 export class PageController {
     @Get('test')
     test(@Req() request) {

@@ -180,7 +180,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], PageController.prototype, "delete", null);
 PageController = __decorate([
-    common_1.Controller('wiki')
+    common_1.Controller('page')
 ], PageController);
 exports.PageController = PageController;
 //# sourceMappingURL=page.controller.js.map

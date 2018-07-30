@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </nav>
-                <footer class="md-drawer-footer">
+                <footer v-show="false" class="md-drawer-footer">
                     <button @click="is_show_create_page=true">添加分类</button>
                 </footer>
             </div>
@@ -110,7 +110,7 @@
             save(istip = true){
                 var _this = this;
                 $.ajax({
-                    url: "/page/update",
+                    url: "update",
                     type: "POST",
                     data: {doc: _this.mdstr, _id: _this._id, name: _this.name},
                     dataType: "json",

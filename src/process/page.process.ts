@@ -2,8 +2,9 @@
  * Created by cyl on 2018/7/6.
  */
 // const fmongo = require('fmongo/src/lib/BaseDatalayer');
+
 const BaseDatalayer = require('fmongo/src/lib/BaseDatalayer.js');
-const Page = require('../bean/page');
+import Page from '../bean/page'
 
 
 var remark = require('remark');
@@ -11,7 +12,6 @@ var guide = require('remark-preset-lint-markdown-style-guide');
 var html = require('remark-html');
 var report = require('vfile-reporter');
 
-// class PageProcess extends fmongo.BaseDatalayer {
 class PageProcess extends BaseDatalayer {
 
     constructor(collname, T) {

@@ -1,13 +1,11 @@
-/**
- * Created by gonghongyu on 2018/7/19.
- */
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const fmongo = require("fmongo");
-
 const Page = fmongo.BaseBean({
     _id: String,
     parent: String,
     doc: String,
     name: String,
 });
-
-export default Page;
+exports.default = Page;
+//# sourceMappingURL=page.js.map

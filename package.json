@@ -5,8 +5,12 @@
   "scripts": {
     "clean": "rimraf ./build/*",
     "build": "webpack  --color --hide-modules --watch",
+    "tsbuild": "tsc",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "nodemon"
+    "server": "node dist/main.js",
+    "start:dev": "nodemon",
+    "pm2": "pm2 start dist/main.js -i 0 --name \"wiki\"",
+    "pm2:re": "pm2 restart wiki"
   },
   "author": "fangfe",
   "license": "MIT",

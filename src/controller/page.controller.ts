@@ -2,10 +2,11 @@
  * Created by cyl on 2018/5/13.
  */
 import {Controller, Get, Post, Req, Res, Middleware, NestMiddleware} from '@nestjs/common';
-var PageProcess = require("../process/page.process.ts");
-var Page = require("../bean/page");
+var PageProcess = require("../process/page.process");
 var fs = require("fs");
-const RT = require('../util/UT.ts');
+
+import Page from '../bean/page'
+const RT = require('../util/UT');
 
 @Controller('page')
 export class PageController {

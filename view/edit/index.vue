@@ -146,7 +146,7 @@
                             var page = ret.page;
                             _this.name = page.name;
                             _this.mdstr = page.doc;
-                            _this.map[_this.active_id].active = false;
+                            _this.map[_this.active_id] && (_this.map[_this.active_id].active = false);
                             _this.map[_id].active = true;
                             _this.map[_id].name = page.name;
                             _this.active_id = _id;

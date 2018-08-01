@@ -25,7 +25,7 @@ var PageProcess = require("../process/page.process");
 var SpaceProcess = require("../process/space.process");
 var fs = require("fs");
 const page_1 = require("../bean/page");
-const Space_1 = require("../bean/Space");
+const space_1 = require("../bean/space");
 const RT = require('../util/UT');
 let PageController = class PageController {
     list(res, request) {
@@ -37,7 +37,7 @@ let PageController = class PageController {
     create(res, req) {
         return __awaiter(this, void 0, void 0, function* () {
             let { pid, name, space_id } = req.body;
-            let ret = 0, _id, space = new Space_1.default();
+            let ret = 0, _id, space = new space_1.default();
             if (!pid || !name || !space_id) {
                 ret = RT.PARAMETER_ERR;
             }
@@ -124,7 +124,7 @@ let PageController = class PageController {
         return __awaiter(this, void 0, void 0, function* () {
             let { space_name } = params;
             let ret = 0;
-            let page, navs = {}, space = new Space_1.default();
+            let page, navs = {}, space = new space_1.default();
             if (ret == 0) {
                 space = yield SpaceProcess.getOneByCond({ name: space_name });
                 if (space == null) {

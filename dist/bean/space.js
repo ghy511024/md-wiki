@@ -8,4 +8,4 @@ const Space = fmongo.BaseBean({
     isDelete: Boolean
 });
 exports.default = Space;
-//# sourceMappingURL=Space.js.map
+//# sourceMappingURL=space.js.map

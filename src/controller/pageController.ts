@@ -7,7 +7,7 @@ var SpaceProcess = require("../process/space.process");
 var fs = require("fs");
 
 import Page from '../bean/page'
-import Space from '../bean/Space'
+import Space from '../bean/space'
 const RT = require('../util/UT');
 
 @Controller('page')

@@ -99,7 +99,7 @@
                 var _this = this;
                 $.ajax({
                     url: "create",
-                    data: ({pid: _id, name: value}),
+                    data: ({pid: _id, name: value, space_id: window.space._id}),
                     type: "POST",
                     error: function () {
                         alert("网络异常");
@@ -107,8 +107,13 @@
                     },
                     success: function (data) {
                         _this.lock = false;
-                        window.location.href=window.location.href.replace(/_id=.*/gi,"_id="+ data._id);
-                        window.location.reload();
+                        if (data.code == 0) {
+                            window.location.href = window.location.href.replace(/_id=.*/gi, "_id=" + data._id);
+                            window.location.reload();
+                        } else {
+                            alert(data.desc)
+                        }
+
                     }
                 })
             },

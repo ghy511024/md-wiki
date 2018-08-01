@@ -7,13 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const page_controller_1 = require("./controller/page.controller");
+const pageController_1 = require("./controller/pageController");
+const spaceController_1 = require("./controller/spaceController");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
         imports: [],
-        controllers: [page_controller_1.PageController],
+        controllers: [pageController_1.PageController, spaceController_1.SpaceController],
         components: [],
     })
 ], AppModule);

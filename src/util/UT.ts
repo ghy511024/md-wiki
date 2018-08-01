@@ -24,7 +24,9 @@ const RT = {
     SYSERR: 35100,
     PARAMETER_ERR: 36101,
     PAGE_HAS_CHILD: 36201,
+
     DB_DELETE_ERR: 36301,
+    DB_UPDATE_ERR: 36302,
     USER_NOT_EXIST: 35202,
 
     DESC: {
@@ -33,6 +35,7 @@ const RT = {
         36101: '参数错误',
         36201: '当前页面存在子节点',
         36301: '删除失败',
+        36302: '数据库更新失败',
     },
 };
 module.exports = RT;

@@ -1,0 +1,1 @@
+{"version":3,"file":"space.process.js","sourceRoot":"","sources":["../../src/process/space.process.ts"],"names":[],"mappings":";;AAKA,MAAM,aAAa,GAAG,OAAO,CAAC,iCAAiC,CAAC,CAAC;AACjE,yCAAiC;AAGjC,kBAAmB,SAAQ,aAAa;IAEpC,YAAY,QAAQ,EAAE,CAAC;QACnB,KAAK,CAAC,QAAQ,EAAE,CAAC,CAAC,CAAC;IACvB,CAAC;CACJ;AAED,MAAM,CAAC,OAAO,GAAG,IAAI,YAAY,CAAC,OAAO,EAAE,eAAK,CAAC,CAAC"}

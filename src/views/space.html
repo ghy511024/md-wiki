@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+你好 ${ghy}
+<div class="list">
+    <table>
+        <thead>
+        <th></th>
+        </thead>
+        <tbody>
+        <c:forEach items="${list}" var="item">
+            <tr _id="${item._id}">
+                <td>${item._id}</td>
+                <td>${item.name}</td>
+                <td>
+                    <button>删除</button>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
+<div class="wrap">
+    <div class="item">
+        <label for="">空间名</label><input id="name" type="text">
+    </div>
+    <button id="add">添加</button>
+</div>
+
+<script src="http://crossorigin.kukuplay.com/cdns/zyuser/201704//static/js/jquery-1.9.2_9684773.js"></script>
+<script>
+
+    try{
+        window.space=${space}
+    }catch (e){
+
+    }
+    $(function () {
+
+
+        $("#add").on("click", function () {
+            var name = $("#name").val();
+            console.log(name);
+            $.ajax({
+                url: "space/update",
+                type: "post",
+                data: ({name: name}),
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("网络异常")
+                },
+                success: function (ret) {
+                    alert(JSON.stringify(ret));
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

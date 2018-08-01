@@ -34,8 +34,8 @@ class PageProcess extends BaseDatalayer {
         })
     }
 
-    async getNavs(_id) {
-        var list = await this.getList();
+    async getNavs(space_id, space_name) {
+        var list = await this.getList({space_id: space_id});
         var map = {}
         for (var i = 0; i < list.length; i++) {
             map[list[i]._id] = {
@@ -46,7 +46,7 @@ class PageProcess extends BaseDatalayer {
             };
         }
         var root = {
-            _id: "root",
+            _id: space_name,
             isopen: true,
             type: "page-nav"
         };
@@ -59,13 +59,6 @@ class PageProcess extends BaseDatalayer {
 
         for (var i = 0; i < list.length; i++) {
             addNode(list[i]._id, list[i].parent);
-        }
-
-        map[_id] && (map[_id].active = true);
-        var pid = _id;
-        while (map[pid]) {
-            map[pid].isopen = true;
-            pid = map[pid].parent;
         }
         return root;
     }

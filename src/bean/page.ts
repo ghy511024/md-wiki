@@ -8,6 +8,7 @@ const Page = fmongo.BaseBean({
     parent: String,
     doc: String,
     name: String,
+    space_id: String
 });
 
 export default Page;

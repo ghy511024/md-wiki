@@ -1,9 +1,10 @@
 import {Module} from '@nestjs/common';
-import {PageController} from './controller/page.controller';
+import {PageController} from './controller/pageController';
+import {SpaceController} from './controller/spaceController';
 
 @Module({
     imports: [],
-    controllers: [PageController],
+    controllers: [PageController,SpaceController],
     components: [],
 })
 

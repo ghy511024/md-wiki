@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </nav>
-                <footer v-show="false" class="md-drawer-footer">
+                <footer v-show="true" class="md-drawer-footer">
                     <button @click="is_show_create_page=true">添加分类</button>
                 </footer>
             </div>
@@ -167,16 +167,19 @@
             createPage: function () {
                 var new_name = this.new_name;
                 var _this = this;
-                alert(1)
                 $.ajax({
                     url: "/page/create",
-                    data: ({pid: "root", name: new_name}),
+                    data: ({pid: "root", name: new_name, space_id: window.space._id}),
                     type: "POST",
                     error: function () {
                     },
                     success: function (data) {
-                        window.location.href = window.location.href.replace(/_id=.*/gi, "_id=" + data._id);
-                        window.location.reload();
+                        if (data.code == 0) {
+                            window.location.href = window.location.href.replace(/_id=.*/gi, "_id=" + data._id);
+                            window.location.reload();
+                        } else {
+                            alert(data.desc)
+                        }
                     }
                 })
             }

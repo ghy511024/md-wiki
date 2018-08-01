@@ -33,9 +33,9 @@ class PageProcess extends BaseDatalayer {
             });
         });
     }
-    getNavs(_id) {
+    getNavs(space_id, space_name) {
         return __awaiter(this, void 0, void 0, function* () {
-            var list = yield this.getList();
+            var list = yield this.getList({ space_id: space_id });
             var map = {};
             for (var i = 0; i < list.length; i++) {
                 map[list[i]._id] = {
@@ -46,7 +46,7 @@ class PageProcess extends BaseDatalayer {
                 };
             }
             var root = {
-                _id: "root",
+                _id: space_name,
                 isopen: true,
                 type: "page-nav"
             };
@@ -57,12 +57,6 @@ class PageProcess extends BaseDatalayer {
             }
             for (var i = 0; i < list.length; i++) {
                 addNode(list[i]._id, list[i].parent);
-            }
-            map[_id] && (map[_id].active = true);
-            var pid = _id;
-            while (map[pid]) {
-                map[pid].isopen = true;
-                pid = map[pid].parent;
             }
             return root;
         });

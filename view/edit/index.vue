@@ -168,7 +168,7 @@
                 var new_name = this.new_name;
                 var _this = this;
                 $.ajax({
-                    url: "/page/create",
+                    url: "create",
                     data: ({pid: "root", name: new_name, space_id: window.space._id}),
                     type: "POST",
                     error: function () {

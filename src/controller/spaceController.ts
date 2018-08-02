@@ -2,10 +2,10 @@
  * Created by cyl on 2018/5/13.
  */
 import {Controller, Get, Post, Req, Res, Middleware, NestMiddleware} from '@nestjs/common';
-var SpaceProcess = require("../process/space.process");
+var SpaceProcess = require("../process/spaceProcess");
 
 import Space from '../bean/space'
-const RT = require('../util/UT');
+const RT = require('../util/RT');
 
 @Controller('space')
 export class SpaceController {
@@ -47,6 +47,7 @@ export class SpaceController {
                 ret = RT.DB_UPDATE_ERR;
             }
         }
+        console.log(ret);
         var result = RT.result(ret);
         res.send(result);
     }

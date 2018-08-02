@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="main">
+    <label for="">git name</label><input type="text" id="gitname" value="webhooktest">
+    <label for="">git 项目地址</label><input type="text" id="giturl" value="git@gitlab.58corp.com:fangfe/webhooktest.git">
+    <label for="">分支名</label><input type="text" id="commitId">
+    <button id="add">同步</button>
+</div>
+<script src="http://crossorigin.kukuplay.com/cdns/zyuser/201704//static/js/jquery-1.9.2_9684773.js"></script>
+<script>
+    $(function () {
+        $("#add").on("click", function () {
+            var gitname = $("#gitname").val();
+            var giturl = $("#giturl").val();
+            var commitId = $("#commitId").val();
+            console.log(gitname, giturl, commitId);
+            $.ajax({
+                url: "gitsync",
+                type: "post",
+                data: ({gitname: gitname, giturl: giturl, commitId: commitId}),
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("网络异常")
+                },
+                success: function (ret) {
+                    alert(JSON.stringify(ret));
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

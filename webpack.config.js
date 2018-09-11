@@ -6,6 +6,7 @@ module.exports = {
     mode: 'development',
     entry: {
         app: ['./view/edit/index.js'],
+        all: ['./view/style/index.scss'],
     },
     output: {
         filename: '[name].js',

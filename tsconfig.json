@@ -11,8 +11,8 @@
     "target": "es6",
     "sourceMap": true,
     "allowJs": true,
-    "outDir": "./dist",
-    "baseUrl": "./src"
+    "outDir": "./dist/dbtest",
+    "baseUrl": "./src/dbtest"
   },
   "include": [
     "src/**/*"

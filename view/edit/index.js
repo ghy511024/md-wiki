@@ -4,6 +4,7 @@
 import app from './index.vue';
 import nav from "./component/nav.vue";
 import iView from 'iview';
+
 // import 'iview/dist/styles/iview.css';
 
 window.Vue.component("page-nav", nav);

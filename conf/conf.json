@@ -1,6 +1,6 @@
 {
   "db": {
-    "dbAttr": "192.168.185.140",
+    "dbAttr": "192.168.66.198",
     "dbPort": "27017",
     "dbName": "test",
     "dbUser": "test",

@@ -1,4 +1,4 @@
-@import "../css/variables";
+@import "../../style/variables";
 
 .edit-wrap {
   .title-input {
@@ -63,4 +63,18 @@
     line-height: 1.5;
     color: $edit-textarea-color;
   }
+}
+.edit-wrap, .view-wrap {
+  width: 50%;
+  margin: 0px;
+  overflow: hidden;
+}
+.view-wrap {
+  left: 50%;
+  overflow-y: auto;
+  color: #333;
+  background-color: #fbfbfb;
+  padding: 8px 40px 80px;
+  font-size: 16px;
+  line-height: 1.75;
 }

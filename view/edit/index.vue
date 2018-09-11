@@ -1,5 +1,5 @@
 <style lang="scss">
-    @import "index";
+    /*@import "index";*/
 </style>
 <template>
     <div class="main layout_container">
@@ -52,11 +52,12 @@
                             </Modal>
                         </li>
                     </ul>
-                    <textarea name="" id="" cols="30" rows="10" v-model="mdstr"></textarea>
+                    <textarea name="" id="myarray" cols="30" rows="10" v-model="mdstr"
+                              @paste="paste($event)"></textarea>
                 </div>
                 <div class="view-wrap">
                     <div class="code-inner">
-                        <div class='md_5' v-html="htmls"></div>
+                        <div class='md_main' v-html="htmls"></div>
                     </div>
                 </div>
             </main>
@@ -74,6 +75,8 @@
     var autoSave = require('./js/autoSave');
     var deleteBusiness = require('./js/deleteBusiness');
     var createPage = require('./js/createPage');
+    var imgUpload = require('./js/imgUpload');
+    var insertAtCaret = require('./js/insertAtCaret');
     export default{
         data: function () {
             return {
@@ -182,6 +185,36 @@
                         }
                     }
                 })
+            },
+            paste: function (e) {
+                var _this = this;
+                var clipboard = e.clipboardData;
+                console.log(clipboard)
+                for (var i = 0, len = clipboard.items.length; i < len; i++) {
+                    console.log('========================================')
+                    if (clipboard.items[i].kind == 'file' || clipboard.items[i].type.indexOf('image') > -1) {
+                        var blob = clipboard.items[i].getAsFile();
+//                        var form = new FormData;
+//                        form.append('avatar', imageFile);
+                        if (blob !== null) {
+                            var reader = new FileReader();
+                            reader.onload = function (event) {
+                                // event.target.result 即为图片的Base64编码字符串
+                                var base64_str = event.target.result
+                                //可以在这里写上传逻辑 直接将base64编码的字符串上传（可以尝试传入blob对象，看看后台程序能否解析）
+//                                console.log(base64_str);
+//                                $("#ghy_img")[0].src = base64_str
+                                imgUpload(base64_str, function (imgpath) {
+                                    console.log(imgpath);
+                                    insertAtCaret($("#myarray")[0], `![](${imgpath})`);
+                                    _this.mdstr=$("#myarray")[0].value
+                                })
+                            }
+                            reader.readAsDataURL(blob);
+                        }
+
+                    }
+                }
             }
         },
         mounted: function () {

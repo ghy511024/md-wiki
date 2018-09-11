@@ -1,9 +1,9 @@
-@import "../edit/css/lib/color_1";
+@import "./lib/color_1";
 
 $color_title: $primary-text-color;
 $color_bg_code: $primary-text-color;
 $color_code: $divider-color;
-.md_5 {
+.md_main {
   color: #28353c;
   font-size: 14px;
   line-height: 1.6;
@@ -57,7 +57,11 @@ $color_code: $divider-color;
   p {
     margin: 10px 5px !important;
   }
-
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
   table, pre, dl, blockquote, q, ul, ol {
     margin: 8px 4px;
   }
@@ -138,7 +142,7 @@ $color_code: $divider-color;
   h5 {
     font-size: 16px;
   }
-  h6{
+  h6 {
     font-size: 14px;
   }
   table {
